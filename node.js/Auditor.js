@@ -10,13 +10,13 @@ s.bind(protocol.PROTOCOL_PORT, function() {
   s.addMembership(protocol.PROTOCOL_MULTICAST_ADDRESS);
 });
 
-const musicians = [];
+let musicians = [];
 
 s.on('message', (msg, source) => {
   const musician = JSON.parse(msg);
+  let i;
 
   let found = false;
-  let i;
   for (i = 0; i < musicians.length; i++) {
     if (musicians[i].uuid === musician.uuid) {
       found = true;
@@ -29,6 +29,13 @@ s.on('message', (msg, source) => {
     musicians.push(musician);
   }
 });
+
+function timeout() {
+  musicians = [];
+  console.clear();
+}
+
+setInterval(timeout, 5000);
 
 // TCP Server
 
