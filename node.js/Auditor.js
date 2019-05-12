@@ -35,4 +35,4 @@ const server = net.createServer((socket) => {
   socket.destroy();
 });
 
-server.listen(2205, '127.0.0.1');
+server.listen(2205, '0.0.0.0');
