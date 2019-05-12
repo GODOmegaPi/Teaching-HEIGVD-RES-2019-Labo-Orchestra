@@ -10,28 +10,19 @@ s.bind(protocol.PROTOCOL_PORT, function() {
   s.addMembership(protocol.PROTOCOL_MULTICAST_ADDRESS);
 });
 
-let musicians = [];
+let musicians = new Map();
 
 s.on('message', (msg, source) => {
   const musician = JSON.parse(msg);
-  let i;
 
-  let found = false;
-  for (i = 0; i < musicians.length; i++) {
-    if (musicians[i].uuid === musician.uuid) {
-      found = true;
-      break;
-    }
-  }
-
-  if (!found) {
+  if (musicians(musician.uuid)) {
     console.log(musician);
-    musicians.push(musician);
+    musicians.set(musician.uuid, musician);
   }
 });
 
 function timeout() {
-  musicians = [];
+  musicians = new Map();
   console.clear();
 }
 
