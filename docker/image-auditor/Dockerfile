@@ -6,4 +6,4 @@ MAINTAINER Olivier Liechti <olivier.liechti@heig-vd.ch>
 #
 COPY src /opt/app/
 
-CMD ["node", "/opt/app/station.js"]
+CMD ["node", "/opt/app/Auditor.js"]
