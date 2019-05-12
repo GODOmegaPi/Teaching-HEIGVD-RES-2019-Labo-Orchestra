@@ -31,8 +31,10 @@ setInterval(timeout, 5000);
 // TCP Server
 
 const server = net.createServer((socket) => {
-  socket.write(JSON.stringify(musicians));
-  socket.destroy();
+  musicians.forEach((value, key, map) => {
+    socket.write(JSON.stringify(value));
+  });
+  socket.end();
 });
 
-server.listen(2205, '127.0.0.1');
+server.listen(2205);
