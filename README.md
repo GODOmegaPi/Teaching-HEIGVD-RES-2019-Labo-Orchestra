@@ -113,7 +113,7 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | What **payload** should we put in the UDP datagrams? |
 | | The instrument, the UUID and the startTime |
 |Question | What **data structures** do we need in the UDP sender and receiver? When will we update these data structures? When will we query these data structures? |
-| | *Enter your response here...* |
+| | We need the payload to be a JSON with the data previously said. We don't update those infos unless we need to delete a client in the list for inactivity greater than 5 seconds. We query this data structures every seconds client side  |
 
 
 ## Task 2: implement a "musician" Node.js application
@@ -135,7 +135,7 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | In Node.js, how can we **emit UDP datagrams**? |
 | | By creating an UDP socket and sending payload to a port and IP  |
 |Question | In Node.js, how can we **access the command line arguments**? |
-| | *Enter your response here...*  |
+| | By using the `console` keyword  |
 
 
 ## Task 3: package the "musician" app in a Docker image
@@ -145,7 +145,7 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | How do we **define and build our own Docker image**?|
 | | `docker build --tag <image_name>`  |
 |Question | How can we use the `ENTRYPOINT` statement in our Dockerfile?  |
-| | Same as CMD  |
+| | We use it like the CMD one. When we start our containers, we can specify arguments to be given directly to the `ENTRYPOINT` command   |
 |Question | After building our Docker image, how do we use it to **run containers**?  |
 | | `docker run <image_name>`  |
 |Question | How do we get the list of all **running containers**?  |
