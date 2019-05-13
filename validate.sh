@@ -1,5 +1,12 @@
 #!/bin/bash
 
+echo ""
+echo ""
+echo "*** Copying node.js folder for the docker files"
+echo ""
+cp -r ./node.js ./docker/image-musician/
+cp -r ./node.js ./docker/image-auditor/
+
 #
 # This is a bit brutal (and will affect your system if you are running other
 # containers than those of the lab)

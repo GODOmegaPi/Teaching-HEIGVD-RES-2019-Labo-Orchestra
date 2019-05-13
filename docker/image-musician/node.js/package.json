@@ -1,5 +1,5 @@
 {
-  "name": "musician",
+  "name": "RES Labo Orchestra",
   "version": "1.0.0",
   "description": "",
   "main": "Auditor.js",
@@ -16,6 +16,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Guillaume Laubscher",
   "license": "ISC"
 }

@@ -11,6 +11,7 @@ s.bind(protocol.PROTOCOL_PORT, function() {
 });
 
 let musicians = new Map();
+let timeout = new Map();
 
 s.on('message', (msg, source) => {
   const musician = JSON.parse(msg);
@@ -18,22 +19,39 @@ s.on('message', (msg, source) => {
   if (!musicians.get(musician.uuid)) {
     console.log(musician);
     musicians.set(musician.uuid, musician);
+    timeout.set(musician.uuid, 1);
   }
+
+  timeout.set(musician.uuid, 1);
 });
 
-function timeout() {
-  musicians = new Map();
-  console.clear();
+function t() {
+  timeout.forEach((value, key, map) => {
+    if (value < 5) {
+      timeout.set(key, value + 1);
+    } else if (value >= 5) {
+      timeout.delete(key);
+      musicians.delete(key);
+      console.clear();
+      let m = [];
+      musicians.forEach((value, key, map) => {
+        m.push(value);
+      });
+      console.log(JSON.stringify(m));
+    }
+  });
 }
 
-setInterval(timeout, 5000);
+setInterval(t, 1000);
 
 // TCP Server
 
 const server = net.createServer((socket) => {
+  let m = [];
   musicians.forEach((value, key, map) => {
-    socket.write(JSON.stringify(value));
+    m.push(value);
   });
+  socket.write(JSON.stringify(m));
   socket.end();
 });
 
