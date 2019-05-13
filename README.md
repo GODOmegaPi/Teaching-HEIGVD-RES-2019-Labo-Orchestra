@@ -169,7 +169,7 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | When and how do we **get rid of inactive players**?  |
 | | If a player haven't played in the last 5 seconds |
 |Question | How do I implement a **simple TCP server** in Node.js?  |
-| | `net.createServer((socket)` |
+| | `net.createServer(socket)` |
 
 
 ## Task 5: package the "auditor" app in a Docker image
